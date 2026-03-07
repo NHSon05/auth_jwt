@@ -70,7 +70,7 @@ export const signIn = async (req, res) => {
             expireAt: new Date(Date.now() + REFRESH_TOKEN_TLL),
         })
         // return refresh token in cookie
-        res.cookie('refeshToken', refreshToken, {
+        res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: true,
             sameSite: 'none', // backend, frontend deploy riêng
@@ -87,8 +87,8 @@ export const signIn = async (req, res) => {
 export const signOut = async (req, res) => {
     try {
         // lấy refresh token từ cookie
-        const token = req.cookie?.refreshToken;
-        if (!token){
+        const token = req.cookies?.refreshToken;
+        if (token){
         // xoá refresh token trong Session
             await Session.deleteOne({refreshToken: token})
             // xoá cookie
