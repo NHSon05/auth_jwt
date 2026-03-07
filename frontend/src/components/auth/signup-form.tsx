@@ -7,6 +7,8 @@ import { Button } from "../ui/button"
 import {z} from 'zod'
 import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
+import { useAuthStore } from "@/stores/useAuthStore"
+import { useNavigate } from "react-router"
 
 const signUpSchema = z.object({
   firstname: z.string().min(1, "Họ bắt buộc phải có"),
@@ -26,10 +28,13 @@ export function SignupForm({
   const {register, handleSubmit, formState: {errors, isSubmitting}} = useForm<SignUpFormValues>({
     resolver: zodResolver(signUpSchema),
   })
-
+  const navigate = useNavigate()
+  const { signUp } = useAuthStore()
   const onSubmit = async (data: SignUpFormValues) => {
+    const {username, password, email, firstname,  lastname, } = data;
     // call api to signup
-
+    await signUp(username, password, email, firstname, lastname)
+    navigate('/login');
   }
 
   return (
@@ -125,7 +130,7 @@ export function SignupForm({
                 <Input
                   type="email"
                   id="email"
-                  {...register("username")}
+                  {...register("email")}
                   placeholder="m@email.com"
                 />
                 {/* todo: error message */} 
