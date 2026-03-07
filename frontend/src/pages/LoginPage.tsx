@@ -1,31 +1,10 @@
-import { GalleryVerticalEnd } from "lucide-react"
+import { SignInForm } from "@/components/auth/login-form"
 
-import { LoginForm } from "@/components/login-form"
-
-export default function LoginPage() {
+export default function SignupPage() {
   return (
-    <div className="grid min-h-svh lg:grid-cols-2">
-      <div className="flex flex-col gap-4 p-6 md:p-10">
-        <div className="flex justify-center gap-2 md:justify-start">
-          <a href="#" className="flex items-center gap-2 font-medium">
-            <div className="flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
-              <GalleryVerticalEnd className="size-4" />
-            </div>
-            Acme Inc.
-          </a>
-        </div>
-        <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-xs">
-            <LoginForm />
-          </div>
-        </div>
-      </div>
-      <div className="relative hidden bg-muted lg:block">
-        <img
-          src="/placeholder.png"
-          alt="Image"
-          className="absolute inset-0 top-1/2 -translate-y-1/2 object-cover dark:brightness-[0.2] dark:grayscale"
-        />
+    <div className="flex min-h-svh flex-col items-center justify-center bg-muted p-6 md:p-10 absolute inset-0 z-0 bg-gradient-purple">
+      <div className="w-full max-w-sm md:max-w-4xl">
+        <SignInForm />
       </div>
     </div>
   )
