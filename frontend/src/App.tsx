@@ -1,7 +1,7 @@
 import {BrowserRouter, Route, Routes} from 'react-router'
-import SignInPage from './pages/SignInPage'
 import SignUpPage from './pages/SignUpPage'
 import ChatAppPage from './pages/ChatAppPage'
+import LoginPage from './pages/LoginPage'
 import {Toaster} from 'sonner'
 
 function App() {
@@ -12,8 +12,8 @@ function App() {
         <Routes>
           {/* Public Routes */}
           <Route
-            path='/signin'
-            element={<SignInPage/>}
+            path='/login'
+            element={<LoginPage/>}
           />
           <Route
             path='/signup'
